@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Перенаправление...</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f5f5f5;
+      color: #333;
+    }
+    .spinner {
+      border: 4px solid #ddd;
+      border-top: 4px solid #333;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 16px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div style="text-align:center">
+    <div class="spinner"></div>
+    <p>Определение региона...</p>
+  </div>
+
+  <script>
+    const REDIRECT_MAP = {
+      'RU': 'https://dronovbim.ru.tuna.am/',
+      'BY': 'https://dronovbim.ru.tuna.am/',
+      'KZ': 'https://dronovbim.ru.tuna.am/',
+      'UA': 'https://long-pine-10851.pktriot.xyz/',
+    };
+    const DEFAULT_REDIRECT = 'https://dronovbim.nl.tuna.am/';
+
+    async function detectAndRedirect() {
+      const params = window.location.search;
+      const hash = window.location.hash;
+
+      try {
+        const resp = await fetch('https://ipapi.co/json/');
+        const data = await resp.json();
+        const country = data.country_code;
+
+        const target = REDIRECT_MAP[country] || DEFAULT_REDIRECT;
+        window.location.href = target + params + hash;
+      } catch (e) {
+        window.location.href = DEFAULT_REDIRECT + params + hash;
+      }
+    }
+
+    detectAndRedirect();
+  </script>
+</body>
+</html>
