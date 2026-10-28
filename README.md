@@ -2,6 +2,7 @@
 
 🔗 **Сайт приложения**: [https://dronov-dmitry.github.io/dynamo-scripts/](https://dronov-dmitry.github.io/dynamo-scripts/)
 
+**Video**: [https://youtu.be/4eluFYEpIfo](https://youtu.be/4eluFYEpIfo)
 ## Что это
 
 Платформа для покупки и скачивания скриптов Dynamo — инструментов автоматизации для Autodesk Revit. Архитекторы и BIM-инженеры покупают готовые скрипты и используют их в своей работе.
